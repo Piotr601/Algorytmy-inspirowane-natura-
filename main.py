@@ -15,7 +15,9 @@ y - coordinate y              |      d - dimension
 arr, numb, x, y = Loader.value_loader(f'TSP/{INPUT_NAME}.tsp')
 n, t, c, d, e, dd = Loader.info_loader(f'TSP/{INPUT_NAME}.tsp')
 
+m = Problem.MatrixCalculation(numb, x, y)
 
-print(n,t,c,d,e,dd)
-print()
-print(arr, numb, x, y)
+print(m)
+# print(n,t,c,d,e,dd)
+# print()
+print( x, y)
