@@ -1,4 +1,5 @@
 import random
+import numpy as np
 from unicodedata import unidata_version
 
 # Class to solve a TSP problem
@@ -63,7 +64,7 @@ class Mutation:
     # Function to swap random values
     def SwapMutation(numb):
         # Copying numb lists
-        arr = numb.copy()
+        arr = np.copy(numb)
         # Draw a two elements to swap
         elem = random.sample(range(0,len(numb)), 2)
         # Swapping values
@@ -75,14 +76,14 @@ class Mutation:
     def InversionMutation(numb):
         new_arr = []
         # Finding a two boundary items to swap
-        elem = random.sample(range(1,len(numb)+1), 2)
+        elem = random.sample(range(len(numb)), 2)
         elem.sort()
-        
+
         # Replacing items in array basic on elem values
-        for item in numb:
+        for pos, item in enumerate(numb):
             # If items in numb are in set
-            if int(item) >= elem[0] and int(item) <= elem[1]:
-                new_arr.append(str(elem[1] + elem[0] - int(item)))
+            if pos >= elem[0] and pos <= elem[1]:
+                new_arr.append(str(numb[elem[1] + elem[0] - pos]))
             # Other values (not changed)
             else:
                 new_arr.append(item)
@@ -90,6 +91,24 @@ class Mutation:
         return new_arr
 
 
-# Class to cross two 
+# Class to cross two objects into one
 class Crossover:
-    pass
+    
+    # Function to calculate OX crossover
+    def OrderedCrossover(numb, sec_numb):
+        #cities = np.copy(numb)
+        #cities2 = np.copy(sec_numb)
+
+        cities = np.array([1,2,3,4,5,6,7,8,9])
+        cities2 = np.array([5,7,4,9,1,3,6,2,8])
+
+        elem = np.array([2,6])
+        elem.sort()
+
+        while True:
+            print(elem)
+        
+        #cities = [1,2,3,4,5,6,7,8,9]
+        #cities2 = [5,7,4,9,1,3,6,2,8]
+
+        #elem = random.sample(range(0,len(numb)), 2)

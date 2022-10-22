@@ -1,5 +1,5 @@
 from loader import Loader
-from algorithm import Algorithm
+from algorithm import Algorithm, Crossover
 from algorithm import Mutation
 from problem import Problem
 
@@ -33,4 +33,6 @@ greedy = Algorithm.GreedyAlgorithm(0, numb, m)
 swapping = Mutation.SwapMutation(numb)
 
 # Mutation inversion operation
-inversion = Mutation.InversionMutation(numb) 
+inversion = Mutation.InversionMutation(numb)
+
+print(Crossover.OrderedCrossover(numb, numb))
