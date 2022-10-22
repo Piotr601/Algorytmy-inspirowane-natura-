@@ -1,4 +1,5 @@
 import random
+import logging
 import numpy as np
 from unicodedata import unidata_version
 
@@ -96,19 +97,53 @@ class Crossover:
     
     # Function to calculate OX crossover
     def OrderedCrossover(numb, sec_numb):
-        #cities = np.copy(numb)
-        #cities2 = np.copy(sec_numb)
+        # Define variables
+        cities = numb.copy()
+        cities2 = sec_numb.copy()[::-1]
+        arr = []
 
-        cities = np.array([1,2,3,4,5,6,7,8,9])
-        cities2 = np.array([5,7,4,9,1,3,6,2,8])
-
-        elem = np.array([2,6])
+        # Finding two random numbers
+        elem = random.sample(range(len(numb)), 2)
         elem.sort()
 
-        while True:
-            print(elem)
-        
-        #cities = [1,2,3,4,5,6,7,8,9]
-        #cities2 = [5,7,4,9,1,3,6,2,8]
+        # Looking for left length and cities core
+        left_len = len(cities[:elem[0]])
+        cities = cities[elem[0]:elem[1]]
 
-        #elem = random.sample(range(0,len(numb)), 2)
+        # Removing repeat cities
+        for item in cities:
+            cities2.remove(item)
+
+        # Adding cities to the left
+        for i in range(left_len):
+            arr.append(cities2[0])
+            cities2.pop(0)
+            
+        # Adding cities to the right
+        arr += cities + cities2
+
+        # Converting array to float
+        arr_float = [round(float(i)) for i in arr]
+
+        # Checking if all value are correct (not missing)
+        if sum(arr_float) != (int(len(numb))*int(len(numb)+1))/2:
+            logging.error("Problem with Crossover, values doesn't agree")
+            return False
+        else:
+            return arr
+
+
+    # Class to calculate PMX crossover
+    def PartialyMatchedCrossover(numb, sec_numb):
+        #cities = numb.copy()
+        #cities2 = sec_numb.copy()
+        cities = [1,2,3,4,5,6,7,8,9]
+        cities2 = [4,3,1,2,8,7,5,6,9]
+        arr = []
+
+        # Finding two random numbers
+        #elem = random.sample(range(len(numb)), 2)
+        elem = [3,5]
+        elem.sort()
+
+        print(cities[elem[0]:elem[1]])

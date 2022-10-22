@@ -20,19 +20,23 @@ n, t, c, d, e, dd = Loader.info_loader(f'TSP/{INPUT_NAME}.tsp')
 # Calculating matrix
 m = Problem.MatrixCalculation(numb, x, y)
 
-# Random algorithm
-random = Algorithm.RandomAlgorithm(numb, m)
+# # Random algorithm
+# random = Algorithm.RandomAlgorithm(numb, m)
 
-# Greedy algorithm
-#for i in range(0, len(numb)):
-#    greedy = Algorithm.GreedyAlgorithm(i, numb, m)
-#    print(greedy)
-greedy = Algorithm.GreedyAlgorithm(0, numb, m)
+# # Greedy algorithm
+# #for i in range(0, len(numb)):
+# #    greedy = Algorithm.GreedyAlgorithm(i, numb, m)
+# #    print(greedy)
+# greedy = Algorithm.GreedyAlgorithm(0, numb, m)
 
-# Mutation swap operation
-swapping = Mutation.SwapMutation(numb)
+# # Mutation swap operation
+# swapping = Mutation.SwapMutation(numb)
 
-# Mutation inversion operation
-inversion = Mutation.InversionMutation(numb)
+# # Mutation inversion operation
+# inversion = Mutation.InversionMutation(numb)
 
-print(Crossover.OrderedCrossover(numb, numb))
+# # Ordered crossover operation
+# ordered = Crossover.OrderedCrossover(numb, numb)
+
+# # Partially Matched crossover operation
+print(Crossover.PartialyMatchedCrossover(numb, numb))
