@@ -21,8 +21,9 @@ m = Problem.MatrixCalculation(numb, x, y)
 
 # Random algorithm
 random = Algorithm.RandomAlgorithm(numb, m)
-greedy = Algorithm.GreedyAlgorithm(0, numb, m)
+greedy = Algorithm.GreedyAlgorithm(1, numb, m)
 
+print(random)
 print(greedy)
 #print(m)
 #print()

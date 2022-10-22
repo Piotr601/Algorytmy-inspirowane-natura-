@@ -16,7 +16,7 @@ class Algorithm:
             dist += matrix[item][random_sequence[index+1]]
 
         # Returning sequence and total distance
-        return random_sequence, dist
+        return random_sequence, round(dist,2)
 
 
     # Algorithm to evaluate greedy city sequences
@@ -54,5 +54,4 @@ class Algorithm:
         dist_to_first = dist + matrix[city][first_city]
 
         # Returning sequence and distance
-        return sequence, dist_to_first
-        
+        return sequence, round(dist_to_first,2)
