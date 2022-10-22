@@ -1,7 +1,7 @@
 import random
 from unicodedata import unidata_version
 
-# Class to solve a random problem
+# Class to solve a TSP problem
 class Algorithm:
     
     # Algorithm to evaluate random city sequences
@@ -55,3 +55,41 @@ class Algorithm:
 
         # Returning sequence and distance
         return sequence, round(dist_to_first,2)
+
+
+# Class to changing items in sequence 
+class Mutation:
+
+    # Function to swap random values
+    def SwapMutation(numb):
+        # Copying numb lists
+        arr = numb.copy()
+        # Draw a two elements to swap
+        elem = random.sample(range(0,len(numb)), 2)
+        # Swapping values
+        arr[elem[0]], arr[elem[1]] = arr[elem[1]], arr[elem[0]]
+        return arr
+
+
+    # Function to inverse a random range
+    def InversionMutation(numb):
+        new_arr = []
+        # Finding a two boundary items to swap
+        elem = random.sample(range(1,len(numb)+1), 2)
+        elem.sort()
+        
+        # Replacing items in array basic on elem values
+        for item in numb:
+            # If items in numb are in set
+            if int(item) >= elem[0] and int(item) <= elem[1]:
+                new_arr.append(str(elem[1] + elem[0] - int(item)))
+            # Other values (not changed)
+            else:
+                new_arr.append(item)
+
+        return new_arr
+
+
+# Class to cross two 
+class Crossover:
+    pass

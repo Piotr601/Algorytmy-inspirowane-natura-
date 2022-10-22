@@ -1,5 +1,6 @@
 from loader import Loader
 from algorithm import Algorithm
+from algorithm import Mutation
 from problem import Problem
 
 
@@ -21,13 +22,15 @@ m = Problem.MatrixCalculation(numb, x, y)
 
 # Random algorithm
 random = Algorithm.RandomAlgorithm(numb, m)
-greedy = Algorithm.GreedyAlgorithm(1, numb, m)
 
-print(random)
-print(greedy)
-#print(m)
-#print()
-#print(random)
-# print(n,t,c,d,e,dd)
-#print('\n')
-#print(x, y)
+# Greedy algorithm
+#for i in range(0, len(numb)):
+#    greedy = Algorithm.GreedyAlgorithm(i, numb, m)
+#    print(greedy)
+greedy = Algorithm.GreedyAlgorithm(0, numb, m)
+
+# Mutation swap operation
+swapping = Mutation.SwapMutation(numb)
+
+# Mutation inversion operation
+inversion = Mutation.InversionMutation(numb) 
