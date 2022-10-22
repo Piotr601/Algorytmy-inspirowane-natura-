@@ -2,6 +2,7 @@ from loader import Loader
 from algorithm import Algorithm
 from problem import Problem
 
+
 # Here is a variable to pick document
 INPUT_NAME = 'berlin11_modified'
 
@@ -20,8 +21,10 @@ m = Problem.MatrixCalculation(numb, x, y)
 
 # Random algorithm
 random = Algorithm.RandomAlgorithm(numb, m)
+greedy = Algorithm.GreedyAlgorithm(0, numb, m)
 
-print(m)
+print(greedy)
+#print(m)
 #print()
 #print(random)
 # print(n,t,c,d,e,dd)
