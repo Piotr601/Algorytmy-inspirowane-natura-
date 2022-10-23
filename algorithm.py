@@ -136,7 +136,7 @@ class Crossover:
     # Class to calculate PMX crossover
     def PartialyMatchedCrossover(numb, sec_numb):
         cities = numb.copy()
-        cities2 = sec_numb.copy()[::-1]
+        cities2 = sec_numb.copy()
 
         while True:
             # Finding two random numbers
@@ -162,3 +162,37 @@ class Crossover:
             # Checking if all value are correct (not missing)
             if sum(arr_float) == (int(len(numb))*int(len(numb)+1))/2:
                 return cities
+
+
+# Class to evaluate in EA
+class Evaluate:
+
+    # Function to create a tournament
+    def TournamentEvaluate(list_numb, size, matrix):
+        # Define variables
+        best_val = float('inf')
+        best_numb = []
+        new_l = []
+        rand = random.sample(range(len(list_numb)), size)
+        
+        # Selecting random arrays
+        for item in rand:
+            new_l.append(list_numb[item])
+
+        # Counting distance
+        for item in new_l:
+            dist = 0
+
+            for index, in_item in enumerate(item[:-1]):
+                dist += matrix[in_item][item[index+1]]
+
+            best_val = min(best_val, dist)
+            if best_val == dist:
+                best_numb = item
+
+        return best_numb
+    
+
+    # Function to create a roulette
+    def RouletteEvaluate():
+        pass

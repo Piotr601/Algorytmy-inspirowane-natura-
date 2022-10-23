@@ -2,7 +2,7 @@
 class Loader:
     # Method to save values    
     def value_loader(data):
-        numb, arr, x, y = [], [], [], []
+        numb, x, y = [], [], []
 
         # Saving values to arrays
         with open(data) as data_file:
@@ -10,12 +10,11 @@ class Loader:
                 whole_line = line.split()
                 if whole_line:
                     if whole_line[0].isnumeric():
-                        arr.append(whole_line)
                         numb.append(whole_line[0])
                         x.append(whole_line[1])
                         y.append(whole_line[2])
 
-        return arr, numb, x, y
+        return numb, x, y
 
 
     # Method to save information
