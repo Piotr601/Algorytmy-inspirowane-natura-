@@ -134,16 +134,31 @@ class Crossover:
 
 
     # Class to calculate PMX crossover
-    def PartialyMatchedCrossover(numb, sec_numb):
+    def PartialyMatchedCrossover(ind1, ind2):
         #cities = numb.copy()
         #cities2 = sec_numb.copy()
         cities = [1,2,3,4,5,6,7,8,9]
         cities2 = [4,3,1,2,8,7,5,6,9]
         arr = []
 
+        '''
+        o1| 1 4 3 2 8 7 6 5 9
+        o2| 2 3 1 4 5 6 8 7 9
+        '''
         # Finding two random numbers
         #elem = random.sample(range(len(numb)), 2)
-        elem = [3,5]
+        elem = [3,6]
         elem.sort()
 
-        print(cities[elem[0]:elem[1]])
+        p1 = cities[elem[0]:elem[1]]
+        p2 = cities2[elem[0]:elem[1]]
+
+        p = (p1, p2)
+        
+        print(p)
+                #cities[pos], cities2[pos] = cities2[pos], cities[pos]
+        # for item in cities2:
+        #     print(item)
+
+        print(cities, p1)
+        print(cities2, p2)
