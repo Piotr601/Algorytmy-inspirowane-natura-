@@ -12,11 +12,12 @@ class Algorithm:
 
         # Looking for random city sequence
         random_sequence = random.sample(range(0,len(numb)), len(numb))
- 
-        # Finding the shortest path
-        for index, item in enumerate(random_sequence[:-1]):
-            dist += matrix[item][random_sequence[index+1]]
 
+        # Finding the shortest path
+        for index, item in enumerate(random_sequence):
+            dist += matrix[item][random_sequence[index-1]]
+        dist += matrix[random_sequence[index-1]][random_sequence[0]]
+        
         # Returning sequence and total distance
         return random_sequence, round(dist,2)
 
@@ -39,19 +40,18 @@ class Algorithm:
             # For each city (which are not visited)
             for item in unvisited_cities:
                 # Looking for min value of each connection
-                val = matrix[city][int(int(item)-1)]
-                short = min(short, val)
+                val = matrix[city][(int(item)-1)]
+                short = np.minimum(short, val)
                 # Looking for number of city (with best result)
                 if val == short:
                     city_to_remove = int(item)
-
             # Calculating distance, adding city to sequence
             dist += short
             sequence.append(city_to_remove)
             # Removing values from unvisited cities, replacing city val
             unvisited_cities.remove(str(city_to_remove))
             city = city_to_remove - 1
-
+            
         # Calculating all distance (from 1st_city to 1st_city)
         dist_to_first = dist + matrix[city][first_city]
 
@@ -65,9 +65,9 @@ class Mutation:
     # Function to swap random values
     def SwapMutation(numb):
         # Copying numb lists
-        arr = np.copy(numb)
+        arr = numb.copy()
         # Draw a two elements to swap
-        elem = random.sample(range(0,len(numb)), 2)
+        elem = random.sample(range(len(numb)), 2)
         # Swapping values
         arr[elem[0]], arr[elem[1]] = arr[elem[1]], arr[elem[0]]
         return arr
@@ -84,7 +84,7 @@ class Mutation:
         for pos, item in enumerate(numb):
             # If items in numb are in set
             if pos >= elem[0] and pos <= elem[1]:
-                new_arr.append(str(numb[elem[1] + elem[0] - pos]))
+                new_arr.append(int(numb[elem[1] + elem[0] - pos]))
             # Other values (not changed)
             else:
                 new_arr.append(item)
@@ -99,7 +99,7 @@ class Crossover:
     def OrderedCrossover(numb, sec_numb):
         # Define variables
         cities = numb.copy()
-        cities2 = sec_numb.copy()[::-1]
+        cities2 = sec_numb.copy()
         arr = []
 
         # Finding two random numbers
@@ -126,7 +126,7 @@ class Crossover:
         arr_float = [round(float(i)) for i in arr]
 
         # Checking if all value are correct (not missing)
-        if sum(arr_float) != (int(len(numb))*int(len(numb)+1))/2:
+        if sum(arr_float) != (int(len(numb)-1)*int(len(numb)))/2:
             logging.error("Problem with Crossover, values doesn't agree")
             return False
         else:
@@ -181,12 +181,14 @@ class Evaluate:
 
         # Counting distance
         for item in new_l:
+            start = item[0]
             dist = 0
 
-            for index, in_item in enumerate(item[:-1]):
-                dist += matrix[in_item][item[index+1]]
+            for index, in_item in enumerate(item):
+                    dist += matrix[in_item][item[index-1]]
+            dist += matrix[item[index-1]][start]
 
-            best_val = min(best_val, dist)
+            best_val = np.minimum(best_val, dist)
             if best_val == dist:
                 best_numb = item
 

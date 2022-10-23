@@ -20,6 +20,6 @@ class Problem:
                     y_axis = float(y[j]) - float(y[i])
                     metric = math.sqrt(pow(x_axis,2) + pow(y_axis,2))
 
-                    matrix[i][j] = round(metric, 0)
+                    matrix[i][j] = round(metric, 2)
 
         return matrix
