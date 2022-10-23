@@ -134,31 +134,31 @@ class Crossover:
 
 
     # Class to calculate PMX crossover
-    def PartialyMatchedCrossover(ind1, ind2):
-        #cities = numb.copy()
-        #cities2 = sec_numb.copy()
-        cities = [1,2,3,4,5,6,7,8,9]
-        cities2 = [4,3,1,2,8,7,5,6,9]
-        arr = []
+    def PartialyMatchedCrossover(numb, sec_numb):
+        cities = numb.copy()
+        cities2 = sec_numb.copy()[::-1]
 
-        '''
-        o1| 1 4 3 2 8 7 6 5 9
-        o2| 2 3 1 4 5 6 8 7 9
-        '''
-        # Finding two random numbers
-        #elem = random.sample(range(len(numb)), 2)
-        elem = [3,6]
-        elem.sort()
+        while True:
+            # Finding two random numbers
+            elem = random.sample(range(len(numb)), 2)
+            elem.sort()
 
-        p1 = cities[elem[0]:elem[1]]
-        p2 = cities2[elem[0]:elem[1]]
+            # Part a whole array
+            p1 = cities[elem[0]:elem[1]]
+            p2 = cities2[elem[0]:elem[1]]
 
-        p = (p1, p2)
-        
-        print(p)
-                #cities[pos], cities2[pos] = cities2[pos], cities[pos]
-        # for item in cities2:
-        #     print(item)
+            # Changing items in value
+            for pos, item in enumerate(cities):
+                if item in p2:
+                    a = p2.index(item)
+                    cities[pos] = p1[a]
 
-        print(cities, p1)
-        print(cities2, p2)
+            # Replacing crossing values 
+            cities[elem[0]:elem[1]] = p2
+
+            # Converting array to float
+            arr_float = [round(float(i)) for i in cities]
+
+            # Checking if all value are correct (not missing)
+            if sum(arr_float) == (int(len(numb))*int(len(numb)+1))/2:
+                return cities

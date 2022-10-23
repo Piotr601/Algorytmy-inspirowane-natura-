@@ -1,3 +1,4 @@
+from audioop import cross
 from loader import Loader
 from algorithm import Algorithm, Crossover
 from algorithm import Mutation
@@ -39,4 +40,4 @@ m = Problem.MatrixCalculation(numb, x, y)
 # ordered = Crossover.OrderedCrossover(numb, numb)
 
 # # Partially Matched crossover operation
-print(Crossover.PartialyMatchedCrossover(numb, numb))
+crossover = Crossover.PartialyMatchedCrossover(numb, numb)
