@@ -16,7 +16,9 @@ This algorithm was implemented with:
 - Required inputs:
 
   Data in format:
+  
   (int, float, float)
+  
   _No. city, x_coordinate, y_coordinate_
 
 More on Data Example
