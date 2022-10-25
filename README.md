@@ -4,9 +4,9 @@ Based on
 https://en.wikipedia.org/wiki/Genetic_algorithm
 
 This algorithm was implemented with:
-- 2 types crossover (OX, PMX)
+- 2 types of crossover (OX, PMX)
 - 2 types of mutation (swap, inversion)
-- evaluate (tournament)
+- one evaluate method (tournament)
 
 ### Input Format:
 - Optional inputs:
