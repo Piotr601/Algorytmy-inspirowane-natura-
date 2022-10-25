@@ -11,15 +11,13 @@ This algorithm was implemented with:
 ### Input Format:
 - Optional inputs:
 
-_NAME, TYPE, COMMENT, EDGE_WEIGHT_TYPE, NODE_COORD_SECTION, _DIMENSION__
+  _NAME, TYPE, COMMENT, EDGE_WEIGHT_TYPE, NODE_COORD_SECTION, _DIMENSION__
 
 - Required inputs:
 
-Data in format:
-
-(int, float, float)
-
-_No. city, x_coordinate, y_coordinate_
+  Data in format:
+  (int, float, float)
+  _No. city, x_coordinate, y_coordinate_
 
 More on Data Example
 
