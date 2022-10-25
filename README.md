@@ -14,8 +14,6 @@ This algorithm was implemented with:
   _NAME, TYPE, COMMENT, EDGE_WEIGHT_TYPE, NODE_COORD_SECTION, _DIMENSION__
 
 - Required inputs:
-
-  Data in format:
   
   (int, float, float)
   
